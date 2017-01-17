@@ -12,4 +12,9 @@ Fix permissions:
 
     chmod +x /opt/cygwin/*.cmd /opt/cygwin/*.sh
 
+If your Cygwin installation directory differs from the default (`C:\cygwin`), edit the following files:
+* `scriptrun.cmd` line 9: `SET CYGPATH=<cygwin path>`
+* `script-filetype.reg` line 8: `@="<icon path>,0"`
+* `script-filetype.reg` line 16: `@="\"<path to scriptrun.cmd>" \"%1\" %*"`
+
 Double-click `script-filetype.reg` to add `.sh` file extension to registry.
