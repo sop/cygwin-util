@@ -10,11 +10,11 @@ CALL :dirname "%_cygdir%" _cygdir
 REM check if root was reached
 FOR %%F IN ("%_cygdir%") DO SET _drive=%%~dF
 IF "%_cygdir%"=="%_drive%" (
-	ECHO Cygwin path not found.
+	ECHO Cygwin installation directory not found.
 	EXIT /B 1
 )
-REM if path contains "cygdrive" directory
-IF EXIST "%_cygdir%\cygdrive" (
+REM if path contains "bin\cygcheck.exe" file
+IF EXIST "%_cygdir%\bin\cygcheck.exe" (
 	GOTO :endwhile_searchpath
 )
 REM retry with parent directory
