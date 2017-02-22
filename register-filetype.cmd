@@ -8,7 +8,10 @@ IF %ERRORLEVEL% NEQ 0 (
 )
 REM resolve Cygwin installation directory
 CALL "%~dp0cygdir.cmd"
-IF %ERRORLEVEL% NEQ 0 EXIT /B 1
+IF %ERRORLEVEL% NEQ 0 (
+	PAUSE
+	EXIT /B 1
+)
 REM description
 REG ADD "HKCR\Cygwin.Script" /f /d "Cygwin Shell Script" > nul
 REM FTA_NoRemove | FTA_NoNewVerb
