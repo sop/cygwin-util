@@ -20,7 +20,7 @@ You can write a script file with `.sh` extension and an interpreter
 *(#! shebang)* of your choice.
 Double-click a file from Windows explorer to have it executed in Cygwin shell.
 
-You can also drag and drop a file to you `.sh` script.
+You can also drag and drop a file to your `.sh` script.
 Path of the dropped file is automatically translated to Cygwin path and passed
 to your script as a first argument.
 
