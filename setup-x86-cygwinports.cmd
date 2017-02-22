@@ -1,1 +1,0 @@
-START setup-x86.exe -K http://cygwinports.org/ports.gpg
