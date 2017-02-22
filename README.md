@@ -4,7 +4,7 @@ These utilities add support for executing `.sh` scripts in
 Windows explorer or dropping a file to `.sh` icon.
 
 ## Installation
-Clone to `/opt/cygwin` directory (inside Cygwin):
+Clone to a directory of choice (eg. `/opt/cygwin`) inside Cygwin:
 
     git clone https://github.com/sop/cygwin-util.git /opt/cygwin
 
@@ -12,9 +12,20 @@ Fix permissions:
 
     chmod +x /opt/cygwin/*.cmd /opt/cygwin/*.sh
 
-If your Cygwin installation directory differs from the default (`C:\cygwin`), edit the following files:
-* `scriptrun.cmd` line 9: `SET CYGPATH=<cygwin path>`
-* `script-filetype.reg` line 8: `@="<icon path>,0"`
-* `script-filetype.reg` line 16: `@="\"<path to scriptrun.cmd>" \"%1\" %*"`
+Execute `register-filetype.cmd` as an administrator to add `.sh` file type
+into registry.
 
-Double-click `script-filetype.reg` to add `.sh` file extension to registry.
+## Usage
+You can write a script file with `.sh` extension and an interpreter
+*(#! shebang)* of your choice.
+Double-click a file from Windows explorer to have it executed in Cygwin shell.
+
+You can also drag and drop a file to you `.sh` script.
+Path of the dropped file is automatically translated to Cygwin path and passed
+to your script as a first argument.
+
+Example `drop.sh`:
+
+    #!/bin/bash
+    stat "$1"
+    read -n 1 -s

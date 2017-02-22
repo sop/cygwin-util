@@ -2,30 +2,30 @@
 SETLOCAL EnableDelayedExpansion
 REM check that first argument is a file
 IF NOT EXIST %1 (
-	ECHO %1 doesn't exists
+	ECHO %1 doesn't exists.
 	EXIT /B 1
 )
-REM Cygwin installation directory
-SET CYGPATH=C:\cygwin
+REM resolve Cygwin installation directory
+CALL "%~dp0cygdir.cmd"
+IF %ERRORLEVEL% NEQ 0 EXIT /B 1
 REM add Cygwin paths to environment
-SET PATH=%CYGPATH%\usr\local\bin;%CYGPATH%\bin;%PATH%
-REM compose arguments to A[] array
+SET PATH=%CYGDIR%\usr\local\bin;%CYGDIR%\bin;%PATH%
+REM compose arguments to argv[] array and set argc to the number of arguments
 SET argc=0
-FOR %%x IN (%*) DO (
+FOR %%X IN (%*) DO (
 	SET /A argc+=1
 	REM if argument is a file
-	IF EXIST %%x (
+	IF EXIST %%X (
 		REM translate to Cygwin path
-		FOR /F "delims= usebackq" %%F IN (`cygpath.exe %%x`) DO (
+		FOR /F "delims= usebackq" %%F IN (`cygpath.exe %%X`) DO (
 			SET _arg="%%F"
 		)
 	) ELSE (
-		SET _arg=%%x
+		SET _arg=%%X
 	)
 	SET argv[!argc!]=!_arg!
 )
 REM unset local variables
-SET "_i="
 SET "_arg="
 REM run script in Cygwin
 START "Cygwin" "mintty.exe" --exec !argv[1]! ^
