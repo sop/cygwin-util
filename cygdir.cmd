@@ -1,5 +1,13 @@
 @ECHO OFF
 SETLOCAL
+REM filename to test when searching for Cygwin directory
+SET _detectFile=bin\cygwin1.dll
+REM if CYGDIR env is already set
+IF DEFINED CYGDIR (
+	IF EXIST "%CYGDIR%\%_detectFile%" (
+		GOTO:eof
+	)
+)
 REM remove quotes
 SET _cygdir=%~0
 REM absolutize path
@@ -14,7 +22,7 @@ IF "%_cygdir%"=="%_drive%" (
 	EXIT /B 1
 )
 REM if path contains "bin\cygcheck.exe" file
-IF EXIST "%_cygdir%\bin\cygcheck.exe" (
+IF EXIST "%_cygdir%\%_detectFile%" (
 	GOTO :endwhile_searchpath
 )
 REM retry with parent directory
