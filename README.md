@@ -1,5 +1,5 @@
 # Sop's Cygwin Utilities
-These utilities add support for executing `.sh` scripts in
+These utilities provide support for executing `.sh` scripts in
 [Cygwin](https://www.cygwin.com/) by double-clicking a file from
 Windows explorer or dropping a file to `.sh` icon.
 
@@ -11,6 +11,11 @@ Clone to a directory of choice (eg. `/opt/cygwin`) inside Cygwin:
 Fix permissions:
 
     chmod +x /opt/cygwin/*.cmd /opt/cygwin/*.sh
+
+Cygwin installation path is detected automatically when these utilities
+are installed under the Cygwin's directory structure. If you install outside
+Cygwin directory, a `CYGDIR` environment variable must be defined with a value
+of Cygwin installation directory (eg. `C:\cygwin64`).
 
 Execute `register-filetype.cmd` as an administrator to add `.sh` file type
 into registry.
