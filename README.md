@@ -17,8 +17,7 @@ are installed under the Cygwin's directory structure. If you install outside
 Cygwin directory, a `CYGDIR` environment variable must be defined with a value
 of Cygwin installation directory (eg. `C:\cygwin64`).
 
-Execute `register-filetype.cmd` as an administrator to add `.sh` file type
-into registry.
+Execute `register-filetype.cmd` to add `.sh` file type into registry.
 
 ## Usage
 You can write a script file with `.sh` extension and an interpreter
