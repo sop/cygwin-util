@@ -4,7 +4,7 @@
 #
 
 # get the first 'java' binary found from PATH that is not this script
-java_bin=$(which -a java 2>/dev/null | xargs readlink -e |
+java_bin=$(which -a java 2>/dev/null | xargs -d'\n' readlink -e |
     grep -v "$(readlink -f "$0")" | head -n1)
 if [[ -z "$java_bin" ]]; then
     echo >&2 "Java not found"
